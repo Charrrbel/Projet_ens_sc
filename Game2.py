@@ -1,6 +1,7 @@
 import pygame
 import random
 import sys
+import openpyxl
 
 # Initialize Pygame
 pygame.init()
@@ -13,7 +14,7 @@ font = pygame.font.Font('freesansbold.ttf', 32)
 
 # Initialize the reaction list
 reaction_list = []
-
+CORRECT_COUNT = 0
 # Game loop
 repeat_count = 0
 while repeat_count < 5:  # Repeat the game 5 times
@@ -59,7 +60,9 @@ while repeat_count < 5:  # Repeat the game 5 times
                             end_time = pygame.time.get_ticks()
                             duration = end_time - start_time
                             reaction_list.append(duration)
+                            CORRECT_COUNT += 1
                             print("Correct! Time taken:", duration, "ms")
+                            
                         else:
                             print("Incorrect!")
                     except ValueError:
@@ -76,3 +79,17 @@ while repeat_count < 5:  # Repeat the game 5 times
 
 pygame.quit()
 print(reaction_list)
+
+REACTION = sum(reaction_list) / len(reaction_list)
+AGE = input("age : ")
+SEXE = input("sexe : ")
+RESULTAT_SCOLAIRE = input("resultat scolaire : ")
+
+workbook = openpyxl.load_workbook('Data2.xlsx')
+
+sheet = workbook.active
+
+new_row = (REACTION, CORRECT_COUNT, AGE, SEXE, RESULTAT_SCOLAIRE)
+sheet.append(new_row)
+
+workbook.save('Data2.xlsx')
