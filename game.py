@@ -29,13 +29,14 @@ print(REACTION)
 
 AGE = input("age : ")
 SEXE = input("sexe : ")
+RESULTAT_SCOLAIRE = input("resultat scolaire : ")
 
 workbook = openpyxl.load_workbook('Data1.xlsx')
 
 # Get the active sheet
 sheet = workbook.active
 
-new_row = (REACTION, AGE, SEXE)
+new_row = (REACTION, AGE, SEXE, RESULTAT_SCOLAIRE)
 sheet.append(new_row)
 
 workbook.save('Data1.xlsx')
