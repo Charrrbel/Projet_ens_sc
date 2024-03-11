@@ -18,13 +18,15 @@ RUN = True
 while RUN:
     screen.fill((0, 255, 0))
     for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            RUN = False
         if event.type == pygame.MOUSEBUTTONDOWN:
             END = time.time()
             RUN = False
-    pygame.display.update()
+    pygame.display.flip()
 pygame.quit()
 
-REACTION = END - START
+REACTION = (END - START)*1000
 print(REACTION)
 
 AGE = input("age : ")
@@ -40,15 +42,3 @@ new_row = (REACTION, AGE, SEXE, RESULTAT_SCOLAIRE)
 sheet.append(new_row)
 
 workbook.save('Data1.xlsx')
-
-
-
-
-
-# sheet.write(counter,0,REACTION)
-# sheet.write(counter,1,age)
-
-# book = xlsxwriter.Workbook('Data.xlsx')
-# sheet = book.add_worksheet()
-
-# book.close()
