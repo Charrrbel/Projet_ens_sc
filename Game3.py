@@ -1,5 +1,6 @@
 import pygame
 import random
+import openpyxl
 
 # Initialize Pygame
 pygame.init()
@@ -96,3 +97,17 @@ while game_count < 5:
 
 pygame.quit()
 print(reaction_list)
+
+REACTION = sum(reaction_list) / len(reaction_list)
+AGE = input("age : ")
+SEXE = input("sexe : ")
+RESULTAT_SCOLAIRE = input("resultat scolaire : ")
+
+workbook = openpyxl.load_workbook('Data3.xlsx')
+
+sheet = workbook.active
+
+new_row = (REACTION, AGE, SEXE, RESULTAT_SCOLAIRE)
+sheet.append(new_row)
+
+workbook.save('Data3.xlsx')
