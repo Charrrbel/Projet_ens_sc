@@ -29,16 +29,21 @@ pygame.quit()
 REACTION = (END - START)*1000
 print(REACTION)
 
+# VARIABLE ETUDIEE
+
 AGE = input("age : ")
 SEXE = input("sexe : ")
 RESULTAT_SCOLAIRE = input("resultat scolaire : ")
+CONSOMMATION_CAFFEINE = input("Consomme tu de la caffeine ?")
+FATIGUE = input("Es-tu fatigué ?")
 
+
+# 3am men sayyev
 workbook = openpyxl.load_workbook('Data1.xlsx')
 
-# Get the active sheet
 sheet = workbook.active
 
-new_row = (REACTION, AGE, SEXE, RESULTAT_SCOLAIRE)
+new_row = (REACTION, AGE, SEXE, RESULTAT_SCOLAIRE, CONSOMMATION_CAFFEINE, FATIGUE)
 sheet.append(new_row)
 
 workbook.save('Data1.xlsx')
