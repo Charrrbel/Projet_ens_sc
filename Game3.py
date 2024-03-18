@@ -102,12 +102,14 @@ REACTION = sum(reaction_list) / len(reaction_list)
 AGE = input("age : ")
 SEXE = input("sexe : ")
 RESULTAT_SCOLAIRE = input("resultat scolaire : ")
+CONSOMMATION_CAFFEINE = input("Consomme tu de la caffeine ?")
+FATIGUE = input("Es-tu fatigué ?")
 
 workbook = openpyxl.load_workbook('Data3.xlsx')
 
 sheet = workbook.active
 
-new_row = (REACTION, AGE, SEXE, RESULTAT_SCOLAIRE)
+new_row = (REACTION, AGE, SEXE, RESULTAT_SCOLAIRE, CONSOMMATION_CAFFEINE, FATIGUE)
 sheet.append(new_row)
 
 workbook.save('Data3.xlsx')
