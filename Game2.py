@@ -86,12 +86,14 @@ SEXE = input("sexe : ")
 RESULTAT_SCOLAIRE = input("resultat scolaire : ")
 CONSOMMATION_CAFFEINE = input("Consomme tu de la caffeine ?")
 FATIGUE = input("Es-tu fatigué ?")
+SOMMEIL = input("Combien d'heure de sommeil ?")
+REVEIL = input("Combien d'heure depuis le reveil ?")
 
 workbook = openpyxl.load_workbook('Data2.xlsx')
 
 sheet = workbook.active
 
-new_row = (REACTION, AGE, SEXE, RESULTAT_SCOLAIRE, CONSOMMATION_CAFFEINE, FATIGUE)
+new_row = (REACTION, AGE, SEXE, RESULTAT_SCOLAIRE, CONSOMMATION_CAFFEINE, FATIGUE, SOMMEIL, REVEIL)
 sheet.append(new_row)
 
 workbook.save('Data2.xlsx')
